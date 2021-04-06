@@ -1,5 +1,45 @@
 body{
     background-color: #2F3136;
-    color: white;
+    color: black;
     margin: 0;
+}
+
+header{
+    margin-left: 4%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#spacexLogo{
+    width: auto;
+    height: 20px;
+}
+
+#marsLogo{
+    width: auto;
+    height: 20px;
+    margin: 0;
+    animation-name: marsFloat;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+#map {
+    height: 800px;
+    max-width: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+@keyframes marsFloat{
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
 }
