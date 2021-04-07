@@ -14,6 +14,22 @@
             <img id="spacexLogo" src="images/spacex-logo-black-and-white.png" alt="SpaceX Logo">
             <img id="marsLogo" src="images/mars.png" alt="Mars Logo">
         </header>
-        <div id="map"></div>
+        <div class="grid-container">
+            <div class="card1">
+                <h1>Aanbevolen landingslocaties</h1>
+                <div id="map"></div>
+            </div>
+            <div class="card2">
+                <h1>Huidige weersituatie</h1>
+                <article id="weather"></article>
+                <form>
+                    <fieldset>
+                        <label for="city">Locatie:</label>
+                        <input type="text" name="city" id="city" />
+                        <input type="button" id="getWeather" value="Geef huidige weersituatie" />
+                    </fieldset>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

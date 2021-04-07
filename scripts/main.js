@@ -7,6 +7,61 @@ var map = new mapboxgl.Map({
     zoom: 8,
 });
 
+function getAPIdata() {
+
+	var url = 'https://api.openweathermap.org/data/2.5/weather';
+	var apiKey ='63f11da387c22afba0ebfa9fa480720e';
+	var city = document.getElementById('city').value;
+
+	// construct request
+	var request = url + '?' + 'appid=' + apiKey + '&' + 'q=' + city;
+	
+	// get current weather
+	fetch(request)
+	
+	// parse to JSON format
+	.then(function(response) {
+		if(!response.ok) throw Error(response.statusText);
+		return response.json();
+	})
+	
+	// render weather per day
+	.then(function(response) {
+		// render weatherCondition
+		onAPISucces(response);	
+	})
+	
+	// catch error
+	.catch(function (error) {
+		onAPIError(error);
+	});
+}
+
+
+function onAPISucces(response) {
+	// get type of weather in string format
+	var type = response.weather[0].description;
+
+	// get temperature in Celcius
+	var degC = Math.floor(response.main.temp - 273.15);
+
+	// render weather in DOM
+	var weatherBox = document.getElementById('weather');
+	weatherBox.innerHTML = degC + '&#176;C <br>' + type;
+}
+
+
+function onAPIError(error) {
+	console.error('Fetch request failed', error);
+	var weatherBox = document.getElementById('weather');
+	weatherBox.innerHTML = 'No weather data available <br /> Did you enter a valid city?'; 
+}
+
+document.getElementById('getWeather').onclick = function(){
+	// init data stream
+	getAPIdata();
+};
+
 map.on('load', function () {
     map.loadImage(
         'https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png',
@@ -46,7 +101,7 @@ map.on('load', function () {
                             'type': 'Feature',
                             'properties': {
                                 'description':
-                                    '<h2>Peursumstraat, Zoetermeer</h2><p>Ligt middenin de stad Zoetermeer. Door een lange doorgaande straat met een groot grasveld voor de deur kan er hier met een beetje precisie een raket laden. Er valt ook de keuze te maken om op het dak van nummer 25 te landen.</p>'
+                                    '<h2>Peursumstraat, Zoetermeer</h2><p>Ligt middenin de stad Zoetermeer. Door een lange doorgaande straat met een groot grasveld voor de deur kan er hier met een beetje precisie een raket landen. Er valt ook de keuze te maken om op het dak van nummer 25 te landen.</p>'
                             },
                             'geometry': {
                                 'type': 'Point',
@@ -57,7 +112,7 @@ map.on('load', function () {
                             'type': 'Feature',
                             'properties': {
                                 'description':
-                                    '<h2>Evertsenstraat, Zoetermeer</h2><p>Locatie met de minste ruimte van de vier gegeven locaties. Desondanks dat er weinig ruimte is kan er toch geland worden in de riante achtertuin van hoekhuis. Er valt ook de keuze te maken om op het dak van nummer 1 te landen.</p>'
+                                    '<h2>Evertsenstraat, Zoetermeer</h2><p>Locatie met de minste ruimte van de vijf gegeven locaties. Desondanks dat er weinig ruimte is kan er toch geland worden in de riante achtertuin van hoekhuis. Er valt ook de keuze te maken om op het dak van nummer 1 te landen.</p>'
                             },
                             'geometry': {
                                 'type': 'Point',
@@ -68,7 +123,7 @@ map.on('load', function () {
                             'type': 'Feature',
                             'properties': {
                                 'description':
-                                    '<h2>Oude-Tonge</h2><p>Klein dorp met maar 5500 inwoners. Rondom de het dorp zijn verschillende opties om te landen met een raket. Gelieve voor landing contact op te nemen met de dijkbeheerder.</p>'
+                                    '<h2>Oude-Tonge</h2><p>Klein dorp met maar 5500 inwoners. Rondom het dorp zijn verschillende opties om te landen met een raket. Gelieve voor landing contact op te nemen met de dijkbeheerder.</p>'
                             },
                             'geometry': {
                                 'type': 'Point',

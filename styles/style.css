@@ -25,21 +25,108 @@ header{
     animation-timing-function: ease-in-out;
 }
 
-#map {
-    height: 800px;
+h1{
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.card2 p{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: white;
+}
+
+.card1 {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    background: linear-gradient(145deg, #2a2c31, #32343a);
+    box-shadow:  20px 20px 40px #26272b,
+                 -20px -20px 40px #383b41;
+}
+
+.card2 {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    background: linear-gradient(145deg, #2a2c31, #32343a);
+    box-shadow:  20px 20px 40px #26272b,
+                 -20px -20px 40px #383b41;
+}
+
+label{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: white;
+}
+
+fieldset{
+    border: 0;
+    padding: 0;
+}
+
+#map{
+    height: 320px;
     max-width: 100%;
+}
+
+#weather{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: white;
+    padding-bottom: 10px;
+}
+
+#city{
+    margin-left: 2%;
+    border-radius: 8px;
+    height: 20px;
+}
+
+#getWeather{
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    height: 40px;
+    margin: auto;
+    margin-top: 10px;
+    border:0.1em solid #FFFFFF;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color: black;
+    text-align:center;
+}
+
+.grid-container{
     margin-left: 5%;
     margin-right: 5%;
 }
 
 @keyframes marsFloat{
     0% {
-        transform: translateY(0px);
+        transform: translateY(1px);
     }
     50% {
         transform: translateY(-3px);
     }
     100% {
-        transform: translateY(0px);
+        transform: translateY(1px);
     }
 }
